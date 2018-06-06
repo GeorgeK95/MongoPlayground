@@ -4,8 +4,7 @@
 
 module.exports = {
     development: {
-        //'mongodb://mpa:mpampa1@ds016718.mlab.com:16718/mongoplayground'
-        connectionString:  process.env.MONGOLAB_URI,
+        connectionString:  'mongodb://mpa:mpampa1@ds016718.mlab.com:16718/mongoplayground',
         production: {}
     }
 };

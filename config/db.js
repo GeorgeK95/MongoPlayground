@@ -4,8 +4,6 @@ mongoose.Promise = global.Promise;
 /*file edited*/
 
 module.exports = (config) => {
-    console.log('CONFIG OJB:' + config);
-    
     mongoose.connect(config.connectionString);
 
     let db = mongoose.connection;
