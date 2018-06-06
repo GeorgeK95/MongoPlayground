@@ -8,13 +8,7 @@ const env = process.env.NODE_ENV || 'development';
 const db = require('./config/db');
 const config = require('./config/db.config');
 
-console.log('process:' + process.env);
-console.log('gtest:' + process.env.MONGOLAB_URI);
-console.log('ENV[MONGOLAB_URI]:' + ENV['MONGOLAB_URI']);
-console.log('env:' + env);
-console.log('config[env]:' + config[env]);
-
-db(config[env])
+db(/*config[env]*/)
 
 http
     .createServer((req, res) => {
