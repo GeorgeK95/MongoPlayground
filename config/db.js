@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
+/*file edited*/
+
 module.exports = (config) => {
     mongoose.connect(config.connectionString);
 
