@@ -6,8 +6,6 @@ mongoose.Promise = global.Promise;
 module.exports = (config) => {
     mongoose.connect(config.connectionString);
 
-    console.log('ConStr: ' + process.env.connectionString);
-
     let db = mongoose.connection;
     db.once('open', (err) => {
         if (err) {
