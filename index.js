@@ -8,7 +8,7 @@ const env = process.env.NODE_ENV || 'development';
 const db = require('./config/db');
 const config = require('./config/db.config');
 
-db(/*config[env]*/)
+db(config[env])
 
 http
     .createServer((req, res) => {

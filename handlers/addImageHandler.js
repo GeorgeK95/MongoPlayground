@@ -64,20 +64,21 @@ function deleteImg(req, res) {
     let queryDataStr = req.url.substr(req.url.indexOf('?') + 1)
     let imgId = queryDataStr.split('=')[1]
 
-    Image.findByIdAndRemove(imgId, function (err, image) {
+    Image.findOne({_id: imgId}).exec((err, image) => {
         if (err) console.log(err);
 
-        Tag.findOneAndUpdate(
-            {_id: image._id},
-            {$pull: {images: image._id}},
-            // {safe: true},
+        Tag.update(
+            {_id: image.tags},
+            {$pull: {images: imgId}},
+            {safe: true},
             function (err, data) {
                 if (err) console.log(err);
 
-                console.log(1);
-                console.log(data);
+                Image.remove({_id: imgId}).exec((err, data) => {
+                    if (err) console.log(err);
 
-                baseHandler.handleSeeOther(req, res, '')
+                    baseHandler.handleSeeOther(req, res, '')
+                })
             });
     })
 }

@@ -3,12 +3,8 @@ mongoose.Promise = global.Promise;
 
 /*file edited*/
 
-module.exports = (/*config*/) => {
-    console.log('gtest:' + process.env.MONGOLAB_URI);
-
-    mongoose.connect(process.env.MONGOLAB_URI);
-
-    console.log(11);
+module.exports = (config) => {
+    mongoose.connect(process.env.MONGOLAB_URI || config.connectionString);
 
     let db = mongoose.connection;
     db.once('open', (err) => {
